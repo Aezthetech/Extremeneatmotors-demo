@@ -216,6 +216,29 @@
     <a class="btn btn-wa" href="https://wa.me/254721912919">WhatsApp</a>
     <a class="btn btn-call" href="tel:+254721912919">Call</a>
   </div>
+  // Car search
+const searchInput = document.querySelector('input[name="q"]');
+const carCards = document.querySelectorAll('.car-grid .card');
+
+function filterCars() {
+  const term = searchInput.value.toLowerCase().trim();
+  carCards.forEach(card => {
+    card.style.display = card.textContent.toLowerCase().includes(term) ? '' : 'none';
+  });
+}
+
+if (searchInput) {
+  searchInput.addEventListener('input', filterCars);
+  if (searchInput.form) {
+    searchInput.form.addEventListener('submit', e => {
+      e.preventDefault();
+      filterCars();
+      document.getElementById('cars').scrollIntoView();
+    });
+  }
+  const startTerm = new URLSearchParams(location.search).get('q');
+  if (startTerm) { searchInput.value = startTerm; filterCars(); }
+}
   <script>
   const track = document.getElementById('logoTrack');
   const pauseBtn = document.getElementById('pauseBtn');
