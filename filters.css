@@ -1,0 +1,54 @@
+/* =========================================================
+   Extreme Neat Motors: filters.css
+   Extra styles for the filters, photo placeholder, Sold badge
+   and the "no results" message. Loaded after style.css.
+   ========================================================= */
+
+.result-count {
+  margin: 0 0 1rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.card-media { position: relative; }
+
+.photo-soon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 5 / 3;
+  padding: 0 0.5rem;
+  background: #F3D5D9;
+  color: var(--brand-dark);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.badge-sold {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  padding: 0.2rem 0.65rem;
+  border-radius: 6px;
+  background: var(--wine);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.card.is-sold img,
+.card.is-sold .photo-soon { opacity: 0.55; }
+
+.sold-note {
+  margin: auto 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.no-results {
+  padding: 2rem 1rem;
+  text-align: center;
+  color: var(--muted);
+}
+.no-results[hidden] { display: none; }
