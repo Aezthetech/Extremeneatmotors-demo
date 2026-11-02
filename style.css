@@ -1,0 +1,483 @@
+/* =========================================================
+   Xtreme Neat Motors: style.css
+   Mobile-first: the base styles are for phones, and the
+   @media rules at the bottom add the desktop layout.
+   ========================================================= */
+
+/* ---------- 1. Colours and reset ---------- */
+:root {
+  --brand: #C0484F;        /* pinkish red from the logo */
+  --brand-dark: #A93A41;   /* darker red for text and prices */
+  --tint: #FBEDEF;        /* light pink backgrounds */
+  --tint-2: #FDF3F4;
+  --line: #EBC3C8;         /* pink borders */
+  --wine: #3B2328;         /* dark footer */
+  --text: #2B2D36;
+  --muted: #5B6371;
+  --whatsapp: #15803D;
+  --radius: 12px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;   /* stops the sticky header covering section titles */
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  line-height: 1.6;
+  color: var(--text);
+  background: #fff;
+  padding-bottom: 72px;       /* room for the sticky bar on phones */
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+h1, h2, h3 { margin: 0; line-height: 1.15; }
+p { margin: 0 0 1rem; }
+ul { list-style: none; margin: 0; padding: 0; }
+
+.container {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* ---------- 2. Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;            /* easy to tap on a phone */
+  padding: 0 1.25rem;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  font: inherit;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s, color 0.2s;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn:focus-visible { outline: 3px solid #FFBF00; outline-offset: 2px; }
+
+.btn-red   { background: var(--brand); color: #fff; }
+.btn-red:hover { background: var(--brand-dark); }
+
+.btn-wa    { background: var(--whatsapp); color: #fff; }
+.btn-wa:hover { background: #0F6630; }
+
+.btn-call  { background: #fff; color: var(--brand-dark); border-color: var(--brand); }
+.btn-call:hover { background: var(--tint); }
+
+.btn-light { background: #fff; color: var(--wine); }
+.btn-light:hover { background: var(--tint); }
+
+/* ---------- 3. Header ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #fff;
+  border-bottom: 4px solid var(--brand);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 64px;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.brand img {
+  height: 34px;
+  width: auto;
+  border-radius: 6px;
+}
+
+/* On phones the sticky bar at the bottom has Call/WhatsApp,
+   so the header nav and buttons are hidden here. */
+.main-nav,
+.header-actions { display: none; }
+
+.main-nav ul { display: flex; gap: 1.75rem; }
+.main-nav a {
+  color: var(--text);
+  font-weight: 600;
+  text-decoration: none;
+}
+.main-nav a:hover,
+.main-nav a:focus-visible { color: var(--brand); }
+
+.header-actions { gap: 0.6rem; }
+
+/* ---------- 4. Hero ---------- */
+.hero {
+  background: var(--tint);
+  padding: 2rem 0;
+}
+
+.hero-inner {
+  display: grid;
+  gap: 1.5rem;                 /* one column on phones */
+}
+
+.eyebrow {
+  margin-bottom: 0.5rem;
+  color: var(--brand-dark);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.hero h1 { font-size: 1.9rem; }
+
+.lead {
+  margin-top: 0.75rem;
+  color: #3C4350;
+  font-size: 1.05rem;
+  max-width: 48ch;
+}
+
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+/* ---------- 5. Search card ---------- */
+.search-card {
+  display: grid;
+  gap: 0.9rem;
+  padding: 1.1rem;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+}
+.search-card h2 { font-size: 1.25rem; }
+
+.field label {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.field input,
+.field select {
+  width: 100%;
+  min-height: 44px;
+  padding: 0 0.75rem;
+  border: 1px solid #9AA1AD;
+  border-radius: 8px;
+  font: inherit;
+  background: #fff;
+}
+.field input:focus-visible,
+.field select:focus-visible {
+  outline: 3px solid #FFBF00;
+  outline-offset: 1px;
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+/* ---------- 6. Car cards ---------- */
+.cars { padding: 2rem 0 1rem; }
+
+.section-head { margin-bottom: 1.25rem; }
+.section-head h2 { font-size: 1.5rem; }
+.section-head p { margin: 0.25rem 0 0; color: var(--muted); }
+
+.car-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;   /* 2 columns on phones */
+  gap: 0.75rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(59, 35, 40, 0.12);
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 5 / 3;
+  object-fit: cover;
+  background: #F3D5D9;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 0.7rem;
+}
+.card h3 { font-size: 1rem; }
+
+.meta {
+  margin: 0.15rem 0 0.5rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.price {
+  margin-bottom: 0.75rem;
+  color: var(--brand-dark);
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: auto;            /* pushes buttons to the bottom of the card */
+}
+.actions .btn { flex: 1; padding: 0 0.5rem; font-size: 0.9rem; }
+.card .btn-call { display: none; }   /* phones: the sticky bar has Call */
+
+/* ---------- 7. Visit us ---------- */
+.visit {
+  margin-top: 1.5rem;
+  padding: 2rem 0;
+  background: var(--tint-2);
+}
+
+.visit-inner {
+  display: grid;
+  gap: 1.5rem;
+}
+.visit h2 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+.visit-text > p { color: #3C4350; }
+.hours { margin-top: 1rem; color: var(--muted); }
+
+.map {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 220px;
+  border-radius: 16px;
+  background: #F3D5D9;
+  color: #3C4350;
+  font-weight: 600;
+  text-align: center;
+  overflow: hidden;
+}
+.map p { margin: 0; padding: 0 1rem; }
+.map iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  border: 0;
+}
+
+/* ---------- 8. Footer ---------- */
+.site-footer {
+  padding: 2rem 0;
+  background: var(--wine);
+  color: #F3DCDE;
+}
+.site-footer h2 { font-size: 1.35rem; color: #fff; }
+.site-footer p { margin: 0.5rem 0 0; }
+
+.footer-inner {
+  display: grid;
+  gap: 1.25rem;
+}
+.footer-actions { display: flex; gap: 0.6rem; }
+.copyright { font-size: 0.8rem; }
+
+/* ---------- 9. Sticky Call/WhatsApp bar (phones only) ---------- */
+.mobile-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 20;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+  padding: 0.6rem 1rem;
+  background: #fff;
+  border-top: 1px solid var(--line);
+}
+
+/* =========================================================
+   TABLETS AND UP (600px+)
+   ========================================================= */
+@media (min-width: 600px) {
+  .car-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+  }
+  .card-body { padding: 1rem; }
+  .card h3 { font-size: 1.2rem; }
+  .meta { font-size: 0.9rem; }
+  .price { font-size: 1.35rem; }
+  .actions .btn { font-size: 1rem; }
+  .card .btn-call { display: inline-flex; }   /* show Call on bigger screens */
+}
+
+/* =========================================================
+   DESKTOP (900px+)
+   ========================================================= */
+@media (min-width: 900px) {
+  body { padding-bottom: 0; }
+
+  .container { padding: 0 1.5rem; }
+
+  /* header: show nav and buttons, hide the sticky bar */
+  .header-inner { min-height: 76px; }
+  .brand img { height: 56px; }
+  .main-nav { display: block; }
+  .header-actions { display: flex; }
+  .mobile-bar { display: none; }
+
+  /* hero becomes two columns */
+  .hero { padding: 4rem 0; }
+  .hero-inner {
+    grid-template-columns: 1.1fr 1fr;
+    align-items: center;
+    gap: 3rem;
+  }
+  .hero h1 { font-size: 3.2rem; }
+  .lead { font-size: 1.15rem; }
+  .search-card { padding: 1.5rem; gap: 1rem; }
+
+  .cars { padding: 4rem 0 1.5rem; }
+  .section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+  }
+  .section-head h2 { font-size: 2rem; }
+  .section-head p { margin: 0; }
+
+  .visit { margin-top: 2.5rem; padding: 4rem 0; }
+  .visit-inner {
+    grid-template-columns: 1fr 1.3fr;
+    align-items: stretch;
+    gap: 2.5rem;
+  }
+  .visit h2 { font-size: 2rem; }
+  .map { min-height: 320px; }
+
+  .site-footer { padding: 2.5rem 0; }
+  .footer-inner {
+    grid-template-columns: 1fr auto;
+    align-items: center;
+  }
+  .copyright { grid-column: 1 / -1; }
+}
+/* ---------- Brand logo slideshow (top strip) ---------- */
+.brand-strip {
+  background: #fff;
+  border-bottom: 1px solid var(--line);
+}
+
+.brand-strip-inner {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
+}
+
+.brand-label {
+  flex: 0 0 auto;
+  margin: 0;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brand-dark);
+  display: none;                      /* hidden on small phones to save space */
+}
+
+.logo-strip {
+  flex: 1;
+  min-width: 0;                       /* lets the strip shrink inside the flex row */
+  overflow: hidden;
+  /* soft fade at both edges */
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+
+.logo-track {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  width: max-content;
+}
+.logo-track li { flex: 0 0 auto; }
+
+.logo-track img {
+  height: 40px;
+  width: auto;
+  filter: grayscale(1);
+  opacity: 0.75;
+  transition: filter 0.2s, opacity 0.2s;
+}
+.logo-track li:hover img { filter: none; opacity: 1; }
+
+/* Animation starts only once the JavaScript has copied the logos */
+.logo-track.is-animated { animation: scroll-logos 28s linear infinite; }
+.logo-strip:hover .logo-track,
+.logo-track.is-paused { animation-play-state: paused; }
+
+@keyframes scroll-logos {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.pause-btn {
+  flex: 0 0 auto;
+  min-height: 44px;
+  padding: 0 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--brand-dark);
+  cursor: pointer;
+}
+.pause-btn:hover { background: var(--tint); }
+.pause-btn:focus-visible { outline: 3px solid #FFBF00; outline-offset: 2px; }
+
+@media (min-width: 600px) {
+  .brand-label { display: block; }
+}
+
+@media (min-width: 900px) {
+  .logo-track img { height: 48px; }
+  .logo-track { gap: 3.5rem; }
+}
+
+/* Visitors who prefer less motion get a normal swipeable row */
+@media (prefers-reduced-motion: reduce) {
+  .logo-track.is-animated { animation: none; }
+  .logo-strip { overflow-x: auto; }
+  .pause-btn { display: none; }
+}
